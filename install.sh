@@ -57,124 +57,76 @@ i18n_display "Greeting"
 
 # Install all dependencies
 printf "\n#######################################################################\n\n"
-i18n_display "Install dependencies"
+i18n_display "Installing dependencies"
 printf "\n#######################################################################\n\n"
-install=$(i18n_prompt "Confirm installation")
-if [[ $install == I* ]]; then
-  i18n_display "Confirmed action"
-  sudo apt-get install build-essential clang bison flex libreadline-dev \
-                     gawk tcl-dev libffi-dev git mercurial graphviz   \
-                     xdot pkg-config python python3 libftdi-dev git
-else
-  i18n_display "Skipped action"
-fi
+sudo apt-get install build-essential clang bison flex libreadline-dev \
+    gawk tcl-dev libffi-dev git mercurial graphviz   \
+    xdot pkg-config python python3 libftdi-dev git
 
 # create a temporary installation folder
 mkdir install.tmp
 
 # Install Icestorm
 printf "\n#######################################################################\n\n"
-i18n_display "Install icestorm"
+i18n_display "Installing icestorm"
 printf "\n#######################################################################\n\n"
-install=$(i18n_prompt "Confirm installation")
-if [[ $install == I* ]]; then
-  i18n_display "Confirmed action"
-  cd install.tmp
-  git clone https://github.com/cliffordwolf/icestorm.git icestorm
-  cd icestorm
-  make -j$(nproc)
-  sudo make install
-  cd ..
-  cd ..
-else
-  i18n_display "Skipped action"
-fi
+cd install.tmp
+git clone https://github.com/cliffordwolf/icestorm.git icestorm
+cd icestorm
+make -j$(nproc)
+sudo make install
+cd ..
+cd ..
 
 # Install Arachne-pnr
 printf "\n#######################################################################\n\n"
-i18n_display "Install arachnepnr"
+i18n_display "Installing arachnepnr"
 printf "\n#######################################################################\n\n"
-install=$(i18n_prompt "Confirm installation")
-if [[ $install == I* ]]; then
-  i18n_display "Confirmed action"
-  cd install.tmp
-  git clone https://github.com/cseed/arachne-pnr.git arachne-pnr
-  cd arachne-pnr
-  make -j$(nproc)
-  sudo make install
-  cd ..
-  cd ..
-else
-  i18n_display "Skipped action"
-fi
+cd install.tmp
+git clone https://github.com/cseed/arachne-pnr.git arachne-pnr
+cd arachne-pnr
+make -j$(nproc)
+sudo make install
+cd ..
+cd ..
 
 # Install Yosys
 printf "\n#######################################################################\n\n"
-i18n_display "Install yosys"
+i18n_display "Installing yosys"
 printf "\n#######################################################################\n\n"
-install=$(i18n_prompt "Confirm installation")
-if [[ $install == I* ]]; then
-  i18n_display "Confirmed action"
-  cd install.tmp
-  git clone https://github.com/cliffordwolf/yosys.git yosys
-  cd yosys
-  make -j$(nproc)
-  sudo make install
-  cd ..
-  cd ..
-else
-  i18n_display "Skipped action"
-fi
+cd install.tmp
+git clone https://github.com/cliffordwolf/yosys.git yosys
+cd yosys
+make -j$(nproc)
+sudo make install
+cd ..
+cd ..
 
 # Install Icarus Verilog
 printf "\n#######################################################################\n\n"
-i18n_display "Install icarus"
+i18n_display "Installing icarus"
 printf "\n#######################################################################\n\n"
-install=$(i18n_prompt "Confirm installation")
-if [[ $install == I* ]]; then
-  i18n_display "Confirmed action"
-  sudo add-apt-repository ppa:team-electronics/ppa
-  sudo apt-get update
-  sudo apt-get install iverilog
-else
-  i18n_display "Skipped action"
-fi
+sudo add-apt-repository ppa:team-electronics/ppa
+sudo apt-get update
+sudo apt-get install iverilog
 
 # Install GTKWave
 printf "\n#######################################################################\n\n"
-i18n_display "Install gtkwave"
+i18n_display "Installing gtkwave"
 printf "\n#######################################################################\n\n"
-install=$(i18n_prompt "Confirm installation")
-if [[ $install == I* ]]; then
-  i18n_display "Confirmed action"
-  sudo apt-get install gtkwave
-else
-  i18n_display "Skipped action"
-fi
+sudo apt-get install gtkwave
 
 # Delete temp files
 printf "\n#######################################################################\n\n"
-i18n_display "Delete temp files"
+i18n_display "Deleting temp files"
 printf "\n#######################################################################\n\n"
-install=$(i18n_prompt "Confirm deletion")
-if [[ $install == C* ]]; then
-  i18n_display "Confirmed action"
-  rm -fR install.tmp
-else
-  i18n_display "Skipped action"
-fi
+rm -fR install.tmp
 
 # Download courseware
 printf "\n#######################################################################\n\n"
-i18n_display "Download courseware"
+i18n_display "Downloading courseware"
 printf "\n#######################################################################\n\n"
-install=$(i18n_prompt "Confirm installation")
-if [[ $install == I* ]]; then
-  i18n_display "Confirmed action"
-  git clone https://github.com/Obijuan/open-fpga-verilog-tutorial.git open-fpga-verilog-tutorial
-else
-  i18n_display "Skipped action"
-fi
+git clone https://github.com/Obijuan/open-fpga-verilog-tutorial.git open-fpga-verilog-tutorial
 
 # Display final remarks
 printf "\n#######################################################################\n\n"
